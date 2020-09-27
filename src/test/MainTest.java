@@ -23,7 +23,7 @@ public class MainTest {
 		return new Object[][] {
 			{new Passenger.Builder()
 				.setCurrentFloor(5)
-				.setDestinationFloor(10)
+				.setDestinationFloor(7)
 				.build(),
 			List.of(new Elevator.Builder()
 					.setElevatorID(1)
