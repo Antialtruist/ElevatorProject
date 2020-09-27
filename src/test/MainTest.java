@@ -23,7 +23,7 @@ public class MainTest {
 		return new Object[][] {
 			{new Passenger.Builder()
 				.setCurrentFloor(5)
-				.setDestinationFloor(6)
+				.setDestinationFloor(10)
 				.build(),
 			List.of(new Elevator.Builder()
 					.setElevatorID(1)
@@ -48,7 +48,7 @@ public class MainTest {
 			
 			{new Passenger.Builder()
 				.setCurrentFloor(5)
-				.setDestinationFloor(6)
+				.setDestinationFloor(10)
 				.build(),
 			List.of(new Elevator.Builder()
 					.setElevatorID(1)
@@ -67,7 +67,7 @@ public class MainTest {
 			
 			{new Passenger.Builder()
 				.setCurrentFloor(8)
-				.setDestinationFloor(7)
+				.setDestinationFloor(1)
 				.build(),
 			List.of(new Elevator.Builder()
 					.setElevatorID(1)
@@ -92,7 +92,7 @@ public class MainTest {
 			
 			{new Passenger.Builder()
 				.setCurrentFloor(2)
-				.setDestinationFloor(3)
+				.setDestinationFloor(10)
 				.build(),
 			List.of(new Elevator.Builder()
 					.setElevatorID(1)
@@ -111,7 +111,7 @@ public class MainTest {
 			
 			{new Passenger.Builder()
 				.setCurrentFloor(7)
-				.setDestinationFloor(8)
+				.setDestinationFloor(15)
 				.build(),
 			List.of(new Elevator.Builder()
 					.setElevatorID(1)
@@ -136,7 +136,7 @@ public class MainTest {
 			
 			{new Passenger.Builder()
 				.setCurrentFloor(7)
-				.setDestinationFloor(4)
+				.setDestinationFloor(1)
 				.build(),
 			List.of(new Elevator.Builder()
 					.setElevatorID(1)

@@ -16,7 +16,6 @@ public class Elevator {
 		elevatorID = 0;
 		currentFloor = 0;
 		destinationFloor = 0;
-		direction = Direction.STOP;
 	}
 	
 	public void setCurrentFloor(Integer currentFloor) {
@@ -34,14 +33,13 @@ public class Elevator {
 	}
 
 	private void defineDirection() {
-		if (currentFloor > destinationFloor) direction = Direction.DOWN;
-		else direction = currentFloor < destinationFloor ? Direction.UP : Direction.STOP;
+		direction = currentFloor < destinationFloor ? Direction.UP : Direction.DOWN;
 	}
 	
 	@Override
 	public String toString() {
-		return "ElevatorID = " + elevatorID + ", currentFloor = " + currentFloor + ", destinationFloor = "
-				+ destinationFloor + ", direction = " + direction;
+		return "ElevatorID = " + elevatorID + " from " + currentFloor + " to "
+				+ destinationFloor + " " + direction;
 	}
 	
 	public static class Builder {

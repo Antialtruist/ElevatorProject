@@ -30,7 +30,7 @@ public class Main {
 			elevatorSortedByMinDistance = new LinkedList<>(minDistances.entrySet());
 			elevatorSortedByMinDistance.sort(((o1, o2) -> {
 				int comparison = o1.getValue().compareTo(o2.getValue());
-				return comparison == 0 ? o1.getKey().getElevatorID().compareTo(o2.getKey().getElevatorID()) : comparison;
+				return comparison == 0 ? o1.getKey().getElevatorID().compareTo(o2.getKey().getElevatorID())	: comparison;
 			}));
 
 			if (!elevatorSortedByMinDistance.isEmpty())
@@ -39,21 +39,42 @@ public class Main {
 		return result;
 	}
 
+//	private static Integer minDistance(Elevator elevator, Passenger passenger, boolean isUp) {
+//		Integer result;
+//		if (isUp ? elevator.getCurrentFloor() >= passenger.getCurrentFloor() : elevator.getCurrentFloor() <= passenger.getCurrentFloor()) {
+////			result = Math.abs(elevator.getCurrentFloor() - passenger.getDestinationFloor());
+////			result = Math.abs(elevator.getDestinationFloor() - elevator.getCurrentFloor()) +
+////                    Math.abs(passenger.getCurrentFloor() - passenger.getDestinationFloor()) +
+////                    Math.abs(passenger.getCurrentFloor() - elevator.getDestinationFloor());
+//			result = Math.abs(passenger.getCurrentFloor() - elevator.getCurrentFloor()) 
+//					+ Math.abs(passenger.getCurrentFloor() - passenger.getDestinationFloor());
+//		} else {
+////			result = Math.abs(passenger.getCurrentFloor() - elevator.getCurrentFloor()) 
+////					+ Math.abs(passenger.getCurrentFloor() - passenger.getDestinationFloor());
+//			result = Math.abs(elevator.getDestinationFloor() - elevator.getCurrentFloor()) +
+//                    Math.abs(passenger.getCurrentFloor() - passenger.getDestinationFloor()) +
+//                    Math.abs(passenger.getCurrentFloor() - elevator.getDestinationFloor());
+//		}
+//		return result;
+//	}
+	
 	private static Integer minDistance(Elevator elevator, Passenger passenger, boolean isUp) {
 		Integer result;
-
-		if (isUp ? elevator.getCurrentFloor() >= passenger.getCurrentFloor() : elevator.getCurrentFloor() <= passenger.getCurrentFloor()) {
-				result = Math.abs(elevator.getCurrentFloor() - passenger.getDestinationFloor());
-//			} else {
-//				result = Math.abs(passenger.getCurrentFloor() - elevator.getCurrentFloor())
-//						+ Math.abs(passenger.getCurrentFloor() - passenger.getDestinationFloor());
-//			}
-
+		if (isUp && elevator.getCurrentFloor() <= passenger.getCurrentFloor()) {
+			result = Math.abs(passenger.getCurrentFloor() - elevator.getCurrentFloor());
+//			result = Math.abs(elevator.getDestinationFloor() - elevator.getCurrentFloor()) +
+//                    Math.abs(passenger.getCurrentFloor() - passenger.getDestinationFloor()) +
+//                    Math.abs(passenger.getCurrentFloor() - elevator.getDestinationFloor());
+//			result = Math.abs(passenger.getCurrentFloor() - elevator.getCurrentFloor()) 
+//					+ Math.abs(passenger.getCurrentFloor() - passenger.getDestinationFloor());
 		} else {
-			result = Math.abs(elevator.getDestinationFloor() - elevator.getCurrentFloor())
-					+ Math.abs(passenger.getCurrentFloor() - passenger.getDestinationFloor())
-					+ Math.abs(passenger.getCurrentFloor() - elevator.getDestinationFloor());
+//			result = Math.abs(passenger.getCurrentFloor() - elevator.getCurrentFloor()) 
+//					+ Math.abs(passenger.getCurrentFloor() - passenger.getDestinationFloor());
+			result = Math.abs(elevator.getDestinationFloor() - elevator.getCurrentFloor()) +
+                    Math.abs(passenger.getCurrentFloor() - passenger.getDestinationFloor()) +
+                    Math.abs(passenger.getCurrentFloor() - elevator.getDestinationFloor());
 		}
 		return result;
 	}
+	
 }

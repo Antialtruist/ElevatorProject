@@ -12,7 +12,7 @@ public class Passenger {
 	
 	@Override
 	public String toString() {
-		return "Passenger [currentFloor = " + currentFloor + ", destinationFloor = " + destinationFloor + "]";
+		return "Passenger from " + currentFloor + " to " + destinationFloor + "]";
 	}
 	
 	public static class Builder {
