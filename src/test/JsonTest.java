@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class JsonTest {
-	static final String JSON = "C:\\Users\\Денис\\eclipse-workspace\\ElevatorProject\\src\\data\\data.json";
+	static final String JSON = "C:\\Users\\Денис\\eclipse-workspace\\ElevatorProject\\src\\data\\data2.json";
 
 	public static TestData[] getDataFromJson() {
 		Reader reader = null;

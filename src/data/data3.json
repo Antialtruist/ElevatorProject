@@ -1,0 +1,26 @@
+[
+	{
+		"elevators": [
+			{
+				"elevatorID": 1,
+				"currentFloor": 2,
+				"destinationFloor": 4
+			},
+			{
+				"elevatorID": 2,
+				"currentFloor": 1,
+				"destinationFloor": 6
+			},
+			{
+				"elevatorID": 3,
+				"currentFloor": 5,
+				"destinationFloor": 8
+			}
+		],
+		"passenger": {
+			"currentFloor": 5,
+			"destinationFloor": 7
+		},
+		"expected": 3
+	}
+]

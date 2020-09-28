@@ -19,20 +19,19 @@ import service.Main;
 public class MainTest {
 
 	@DataProvider
-	public static Object[][] taskProvider() {
+	public static Object[][] testElevator() {
 		TestData[] testData = JsonTest.getDataFromJson();
 		Object[][] objects = new Object[testData.length][];
 		for (int i = 0; i < testData.length; i++) {
-			objects[i] = new Object[] { testData[i].getPassenger(), testData[i].getElevators(),
-					testData[i].getExpected() };
+			objects[i] = new Object[] { testData[i].getElevators(), testData[i].getPassenger(),	testData[i].getExpected() };
 		}
 		return objects;
 	}
 
 	@Test
-	@UseDataProvider("taskProvider")
-	public void inputTest(List<Elevator> elevators, Passenger passenger, int res) {
-		assertEquals(Main.validElevator(elevators, passenger), res);
+	@UseDataProvider("testElevator")
+	public void inputTest(List<Elevator> elevators, Passenger passenger, Integer resultElevatorID) {
+		assertEquals(Main.validElevator(elevators, passenger), resultElevatorID);
 	}
 
 //	@DataProvider
