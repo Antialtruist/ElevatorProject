@@ -39,7 +39,7 @@ public class Elevator {
 	@Override
 	public String toString() {
 		return "ElevatorID = " + elevatorID + " from " + currentFloor + " to "
-				+ destinationFloor + " " + direction;
+				+ destinationFloor;
 	}
 	
 	public static class Builder {

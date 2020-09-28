@@ -10,7 +10,7 @@ import model.Passenger;
 
 public class Main {
 
-	public static Elevator validElevator(List<Elevator> elevators, Passenger psngr) {
+	public static Integer validElevator(List<Elevator> elevators, Passenger psngr) {
 		Map<Elevator, Integer> minDistances = new HashMap<>();
 		List<Map.Entry<Elevator, Integer>> elevatorSortedByMinDistance;
 		Elevator result = null;
@@ -35,7 +35,7 @@ public class Main {
 			if (!elevatorSortedByMinDistance.isEmpty())
 				result = elevatorSortedByMinDistance.get(0).getKey();
 		}
-		return result;
+		return result.getElevatorID();
 	}
 
 	private static Integer minDistance(Elevator elevator, Passenger passenger, boolean dir) {
