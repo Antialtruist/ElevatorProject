@@ -17,171 +17,188 @@ import service.Main;
 
 @RunWith(DataProviderRunner.class)
 public class MainTest {
-	
+
 	@DataProvider
-	public static Object[][] testElevator() {
-		return new Object[][] {
-			{new Passenger.Builder()
-				.setCurrentFloor(5)
-				.setDestinationFloor(7)
-				.build(),
-			List.of(new Elevator.Builder()
-					.setElevatorID(1)
-					.setCurrentFloor(2)
-					.setDestinationFloor(4)
-					.build(),
-					
-					new Elevator.Builder()
-					.setElevatorID(2)
-					.setCurrentFloor(1)
-					.setDestinationFloor(6)
-					.build(),
-			
-					new Elevator.Builder()
-					.setElevatorID(3)
-					.setCurrentFloor(5)
-					.setDestinationFloor(8)
-					.build()
-					),
-			3
-			},
-			
-			{new Passenger.Builder()
-				.setCurrentFloor(5)
-				.setDestinationFloor(10)
-				.build(),
-			List.of(new Elevator.Builder()
-					.setElevatorID(1)
-					.setCurrentFloor(2)
-					.setDestinationFloor(4)
-					.build(),
-					
-					new Elevator.Builder()
-					.setElevatorID(2)
-					.setCurrentFloor(1)
-					.setDestinationFloor(6)
-					.build()
-					),
-			2
-			},
-			
-			{new Passenger.Builder()
-				.setCurrentFloor(8)
-				.setDestinationFloor(1)
-				.build(),
-			List.of(new Elevator.Builder()
-					.setElevatorID(1)
-					.setCurrentFloor(12)
-					.setDestinationFloor(6)
-					.build(),
-					
-					new Elevator.Builder()
-					.setElevatorID(2)
-					.setCurrentFloor(6)
-					.setDestinationFloor(1)
-					.build(),
-			
-					new Elevator.Builder()
-					.setElevatorID(3)
-					.setCurrentFloor(12)
-					.setDestinationFloor(7)
-					.build()
-					),
-			1
-			},
-			
-			{new Passenger.Builder()
-				.setCurrentFloor(2)
-				.setDestinationFloor(10)
-				.build(),
-			List.of(new Elevator.Builder()
-					.setElevatorID(1)
-					.setCurrentFloor(4)
-					.setDestinationFloor(1)
-					.build(),
-					
-					new Elevator.Builder()
-					.setElevatorID(2)
-					.setCurrentFloor(3)
-					.setDestinationFloor(4)
-					.build()
-					),
-			2
-			},
-			
-			{new Passenger.Builder()
-				.setCurrentFloor(7)
-				.setDestinationFloor(15)
-				.build(),
-			List.of(new Elevator.Builder()
-					.setElevatorID(1)
-					.setCurrentFloor(12)
-					.setDestinationFloor(6)
-					.build(),
-					
-					new Elevator.Builder()
-					.setElevatorID(2)
-					.setCurrentFloor(8)
-					.setDestinationFloor(7)
-					.build(),
-			
-					new Elevator.Builder()
-					.setElevatorID(3)
-					.setCurrentFloor(6)
-					.setDestinationFloor(8)
-					.build()
-					),
-			1
-			},
-			
-			{new Passenger.Builder()
-				.setCurrentFloor(7)
-				.setDestinationFloor(1)
-				.build(),
-			List.of(new Elevator.Builder()
-					.setElevatorID(1)
-					.setCurrentFloor(1)
-					.setDestinationFloor(8)
-					.build(),
-					
-					new Elevator.Builder()
-					.setElevatorID(2)
-					.setCurrentFloor(2)
-					.setDestinationFloor(7)
-					.build(),
-					
-					new Elevator.Builder()
-					.setElevatorID(3)
-					.setCurrentFloor(15)
-					.setDestinationFloor(18)
-					.build(),
-					
-					new Elevator.Builder()
-					.setElevatorID(4)
-					.setCurrentFloor(6)
-					.setDestinationFloor(8)
-					.build(),
-					
-					new Elevator.Builder()
-					.setElevatorID(5)
-					.setCurrentFloor(20)
-					.setDestinationFloor(1)
-					.build(),
-			
-					new Elevator.Builder()
-					.setElevatorID(6)
-					.setCurrentFloor(19)
-					.setDestinationFloor(6)
-					.build()
-					),
-			6
-			},
-		};
+	public static Object[][] taskProvider() {
+		TestData[] testData = JsonTest.getDataFromJson();
+		Object[][] objects = new Object[testData.length][];
+		for (int i = 0; i < testData.length; i++) {
+			objects[i] = new Object[] { testData[i].getPassenger(), testData[i].getElevators(),
+					testData[i].getExpected() };
+		}
+		return objects;
 	}
-	
+
 	@Test
-	@UseDataProvider("testElevator")
-	public void getElevator(Passenger p, List<Elevator> elevators, Integer resultElevatorID) {
-		assertEquals(resultElevatorID, Main.validElevator(elevators, p).getElevatorID());
+	@UseDataProvider("taskProvider")
+	public void inputTest(List<Elevator> elevators, Passenger passenger, int res) {
+		assertEquals(Main.validElevator(elevators, passenger), res);
 	}
+
+//	@DataProvider
+//	public static Object[][] testElevator() {
+//		return new Object[][] {
+//			{new Passenger.Builder()
+//				.setCurrentFloor(5)
+//				.setDestinationFloor(7)
+//				.build(),
+//			List.of(new Elevator.Builder()
+//					.setElevatorID(1)
+//					.setCurrentFloor(2)
+//					.setDestinationFloor(4)
+//					.build(),
+//					
+//					new Elevator.Builder()
+//					.setElevatorID(2)
+//					.setCurrentFloor(1)
+//					.setDestinationFloor(6)
+//					.build(),
+//			
+//					new Elevator.Builder()
+//					.setElevatorID(3)
+//					.setCurrentFloor(5)
+//					.setDestinationFloor(8)
+//					.build()
+//					),
+//			3
+//			},
+//			
+//			{new Passenger.Builder()
+//				.setCurrentFloor(5)
+//				.setDestinationFloor(10)
+//				.build(),
+//			List.of(new Elevator.Builder()
+//					.setElevatorID(1)
+//					.setCurrentFloor(2)
+//					.setDestinationFloor(4)
+//					.build(),
+//					
+//					new Elevator.Builder()
+//					.setElevatorID(2)
+//					.setCurrentFloor(1)
+//					.setDestinationFloor(6)
+//					.build()
+//					),
+//			2
+//			},
+//			
+//			{new Passenger.Builder()
+//				.setCurrentFloor(8)
+//				.setDestinationFloor(1)
+//				.build(),
+//			List.of(new Elevator.Builder()
+//					.setElevatorID(1)
+//					.setCurrentFloor(12)
+//					.setDestinationFloor(6)
+//					.build(),
+//					
+//					new Elevator.Builder()
+//					.setElevatorID(2)
+//					.setCurrentFloor(6)
+//					.setDestinationFloor(1)
+//					.build(),
+//			
+//					new Elevator.Builder()
+//					.setElevatorID(3)
+//					.setCurrentFloor(12)
+//					.setDestinationFloor(7)
+//					.build()
+//					),
+//			1
+//			},
+//			
+//			{new Passenger.Builder()
+//				.setCurrentFloor(2)
+//				.setDestinationFloor(10)
+//				.build(),
+//			List.of(new Elevator.Builder()
+//					.setElevatorID(1)
+//					.setCurrentFloor(4)
+//					.setDestinationFloor(1)
+//					.build(),
+//					
+//					new Elevator.Builder()
+//					.setElevatorID(2)
+//					.setCurrentFloor(3)
+//					.setDestinationFloor(4)
+//					.build()
+//					),
+//			2
+//			},
+//			
+//			{new Passenger.Builder()
+//				.setCurrentFloor(7)
+//				.setDestinationFloor(15)
+//				.build(),
+//			List.of(new Elevator.Builder()
+//					.setElevatorID(1)
+//					.setCurrentFloor(12)
+//					.setDestinationFloor(6)
+//					.build(),
+//					
+//					new Elevator.Builder()
+//					.setElevatorID(2)
+//					.setCurrentFloor(8)
+//					.setDestinationFloor(7)
+//					.build(),
+//			
+//					new Elevator.Builder()
+//					.setElevatorID(3)
+//					.setCurrentFloor(6)
+//					.setDestinationFloor(8)
+//					.build()
+//					),
+//			1
+//			},
+//			
+//			{new Passenger.Builder()
+//				.setCurrentFloor(7)
+//				.setDestinationFloor(1)
+//				.build(),
+//			List.of(new Elevator.Builder()
+//					.setElevatorID(1)
+//					.setCurrentFloor(1)
+//					.setDestinationFloor(8)
+//					.build(),
+//					
+//					new Elevator.Builder()
+//					.setElevatorID(2)
+//					.setCurrentFloor(2)
+//					.setDestinationFloor(7)
+//					.build(),
+//					
+//					new Elevator.Builder()
+//					.setElevatorID(3)
+//					.setCurrentFloor(15)
+//					.setDestinationFloor(18)
+//					.build(),
+//					
+//					new Elevator.Builder()
+//					.setElevatorID(4)
+//					.setCurrentFloor(6)
+//					.setDestinationFloor(8)
+//					.build(),
+//					
+//					new Elevator.Builder()
+//					.setElevatorID(5)
+//					.setCurrentFloor(20)
+//					.setDestinationFloor(1)
+//					.build(),
+//			
+//					new Elevator.Builder()
+//					.setElevatorID(6)
+//					.setCurrentFloor(19)
+//					.setDestinationFloor(6)
+//					.build()
+//					),
+//			6
+//			},
+//		};
+//	}
+//	
+//	@Test
+//	@UseDataProvider("testElevator")
+//	public void getElevator(Passenger p, List<Elevator> elevators, Integer resultElevatorID) {
+//		assertEquals(resultElevatorID, Main.validElevator(elevators, p).getElevatorID());
+//	}
 }
